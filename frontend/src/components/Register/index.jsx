@@ -36,7 +36,8 @@ const Register = () => {
     setError("");
     setSuccess("");
 
-    const url = "https://backend-resume-ats-analyzer.onrender.com/auth/register";
+    const API = import.meta.env.VITE_API_URL;
+    const url = `${API}/auth/register`;
     const userDetails = { username, name, email, password }
 
     const options = {
