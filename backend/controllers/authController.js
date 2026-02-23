@@ -50,13 +50,16 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { username, email, password } = req.body;
+    console.log("Login attempt:", { username, email, password: "***" });
 
     // User can login with username or email
     let user;
     if (username) {
       user = await User.findOne({ username });
+      console.log("User found by username:", user ? "Yes" : "No");
     } else if (email) {
       user = await User.findOne({ email });
+      console.log("User found by email:", user ? "Yes" : "No");
     } else {
       return res.status(400).json({ message: "Username or email is required" });
     }
@@ -66,7 +69,9 @@ export const login = async (req, res) => {
     }
 
     // Compare hashed password
+    console.log("Comparing passwords...");
     const isPasswordValid = await bcrypt.compare(password, user.password);
+    console.log("Password valid:", isPasswordValid);
 
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid credentials" });
@@ -80,6 +85,7 @@ export const login = async (req, res) => {
 
     res.json({ message: "Login successful!", token });
   } catch (err) {
+    console.error("Login error:", err.message);
     res.status(500).json({ message: err.message });
   }
 };
