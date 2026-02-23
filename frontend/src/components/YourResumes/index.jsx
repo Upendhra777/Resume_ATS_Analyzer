@@ -36,7 +36,8 @@ const YourResumes = () => {
  
       // STEP 1️⃣ Upload Resume
      const API = import.meta.env.VITE_API_URL;
-      const uploadResponse = await fetch( `${API}/resume/upload`,
+     const uploadResponse = await fetch( 
+      `${API}/resume/upload`,
         {
           method: "POST",
           headers: {
@@ -60,7 +61,6 @@ const YourResumes = () => {
           "ANYTHING YOU WANT! For best results, use a real job description from a role you're interested in.",
       };
      
-     const API = import.meta.env.VITE_API_URL;
       const analyzeResponse = await fetch(
        `${API}/resume/analyze`,
         {
