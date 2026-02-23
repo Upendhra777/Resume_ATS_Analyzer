@@ -31,7 +31,7 @@ const Register = () => {
     setError("");
     setSuccess("");
 
-    const url = "https://resume-ats-backend-1-ysjt.onrender.com/auth/register";
+    const url = "https://backend-resume-ats-analyzer.onrender.com/auth/register";
     const userDetails = { name, email, password }
 
     const options = {
